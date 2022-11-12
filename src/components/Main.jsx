@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
+import Home from './Home'
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 
@@ -19,6 +20,7 @@ const Main = () => {
         <Routes>
           <Route path='/' element={<LoginForm/>}/>
           <Route path='/signup' element={<SignUpForm/>}/>
+          <Route path='/home' element={<Home/>} />
         </Routes>
     </StyledContainer>
   )

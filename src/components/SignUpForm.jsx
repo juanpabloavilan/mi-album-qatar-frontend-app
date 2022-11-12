@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { yupResolver } from '@hookform/resolvers/yup'
 import '../styles.css'
 import { signUpFormValidationSchema } from '../utils/validationSchemas'
+import useSignUp from '../hooks/useSignUp'
 
 const StyledFormContainer = styled.div`
     background-color: #e8e4e6;
@@ -17,12 +18,18 @@ const StyledFormContainer = styled.div`
 `
 
 const SignUpForm = () => {
+  const {fetchSignUp, data, error, loading} = useSignUp()
   const {register, handleSubmit, formState:{errors}} = useForm({
     resolver: yupResolver(signUpFormValidationSchema)
   })
 
-  const onSubmitForm = (data)=>{
-    console.log(data)
+  const onSubmitForm = async(inputFields)=>{
+    fetchSignUp(inputFields).then(()=> {
+      console.log(loading)
+      console.log(error)
+      console.log(data)
+    })
+    
   }
   return (
     <StyledFormContainer>
@@ -43,6 +50,7 @@ const SignUpForm = () => {
             <p className='error'>{errors.confirmPassword && "Contraseñas no coinciden"}</p>
             <input className="primaryButton" type="submit" value="Registrarse"/>
         </form>
+        <p className='error'>{error}</p>
     </StyledFormContainer>
   )
 }
