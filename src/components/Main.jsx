@@ -6,8 +6,7 @@ import SignUpForm from './SignUpForm'
 
 const StyledContainer = styled.div`
     background: #004643;
-    width: 100%;
-    height: 100%;
+    min-height: 100vh;
     margin: 0;
     display: flex;
     align-items: center;

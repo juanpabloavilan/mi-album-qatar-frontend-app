@@ -16,7 +16,6 @@ const StyledFormContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 40%;
-    height: 500px;
     padding: 10px;
 `
 
@@ -28,6 +27,8 @@ const LoginForm = () => {
 
   const onSubmitForm = (data)=>{
     console.log(data)
+    //Enviar request de registrar
+    //Redirigir al login
   }
   return (
     <StyledFormContainer>
