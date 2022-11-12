@@ -1,0 +1,49 @@
+.AppContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.primaryButton{
+    background-color: #f9bc60;
+    color: #001e1d ;
+    border-radius: 0.2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    font-weight: bold;
+}
+
+.error{
+    color: #e16162;
+    margin-top: -1px;
+    text-align: left;
+   
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    width: 70%;
+}
+
+input{
+    font-size: medium;
+    padding: 0.5rem 0.25rem;
+    width: 100%;
+    border: none;
+    border-radius: .2rem;
+}
+
+input:focus{
+    outline: none;
+}
+
+.inputError {
+    border: 2px solid #e16162 ;
+}
+
+.underscoredGrayLink {
+    text-decoration-line: underline;
+    color: #5f6c7b;
+}
