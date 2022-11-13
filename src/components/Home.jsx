@@ -1,8 +1,9 @@
-import React, { Children } from 'react'
+import React, { useContext } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import {BsFillStickiesFill} from 'react-icons/bs'
 import {CgArrowsExchange, CgProfile} from 'react-icons/cg'
+import { userContext } from './context/UserContext'
 
 
 const StyledContainer = styled.div`
@@ -15,10 +16,24 @@ const StyledContainer = styled.div`
 const Home = () => {
   return (
     <StyledContainer>
-        <NavBar/>   
+        <NavBar/>
+        <UserLoggedIcon/>   
         <Outlet/>
     </StyledContainer>
   )
+}
+
+
+const UserLoggedIcon = () =>{
+    const {user} = useContext(userContext)
+    console.log(user)
+    const username = user?.user?.username
+    return(
+        <div className='UserLoggedIcon'>
+            <CgProfile style={{fontSize: "2.5rem", color: "#abd1c6"}}/>
+            <h4 style={{color:"#abd1c6"}}>{username}</h4>
+        </div>
+    )
 }
 
 

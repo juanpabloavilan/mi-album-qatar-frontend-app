@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userContext } from "../components/context/UserContext";
 
 
 const useLogIn = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const navigate = useNavigate()
+  const {setUser} = useContext(userContext)
 
   const fetchLogin = async (data) => {
     setError(null);
@@ -24,8 +26,11 @@ const useLogIn = () => {
               setError(response.error)
               return
           } 
-          console.log(response)
-          navigate('/home')
+          const {user} = response
+          const {token} = response
+          setUser({user, token})
+
+          navigate('/home/album')
     } catch (e) {
       console.log(e);
     } finally {
