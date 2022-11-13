@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import Home from './Home'
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
+import Album from './Album'
+import Intercambio from './Intercambio'
+import Perfil from './Perfil'
 
 const StyledContainer = styled.div`
     background: #004643;
@@ -20,7 +23,12 @@ const Main = () => {
         <Routes>
           <Route path='/' element={<LoginForm/>}/>
           <Route path='/signup' element={<SignUpForm/>}/>
-          <Route path='/home' element={<Home/>} />
+          <Route path='/home' element={<Home/>} >
+            <Route path='album' element={<Album/>}/>
+            <Route path='intercambio' element={<Intercambio/>}/>
+            <Route path='perfil' element={<Perfil/>}/>
+          </Route>
+          <Route path='*' element={<div>Not Found</div>}/>
         </Routes>
     </StyledContainer>
   )

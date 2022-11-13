@@ -1,12 +1,53 @@
-
-
 .primaryButton{
     background-color: #f9bc60;
     color: #001e1d ;
     border-radius: 0.2rem;
     padding: 0.5rem 1rem;
     border: none;
-    font-weight: bold;
+    text-decoration: none;
+    font-weight:500;
+}
+
+.secondaryText{
+    color: #5f6c7b;
+}
+
+.flexRow{
+    display: flex;
+    gap: 1rem;
+}
+
+.title {
+  word-wrap: break-word;
+  color: #50596c;
+  font-weight: 600;
+  text-decoration: none; 
+}
+
+.logo{
+    width: 100px;
+    height: auto;
+    border-radius: 1rem;
+}
+
+.navbar{
+    display: flex;
+    padding: 1rem;
+    padding-left: 1.5rem; 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: space-between;
+    min-height: 100%;
+    margin: 0;
+    background-color: #e8ecef;
+    width: 300px;
+}
+
+
+.AppBarContainer{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .error{
@@ -44,3 +85,4 @@ input:focus{
     text-decoration-line: underline;
     color: #5f6c7b;
 }
+
