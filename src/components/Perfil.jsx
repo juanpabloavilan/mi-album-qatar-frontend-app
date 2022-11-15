@@ -1,5 +1,5 @@
 import React from 'react'
-import StyledContainer from './styledComponents/StyledContainer';
+import StyledContainer from "./styled-components/StyledContainer"
 
 const Perfil = () => {
     return(
