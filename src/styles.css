@@ -8,6 +8,34 @@
     font-weight:500;
 }
 
+button{
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+}
+button:hover{
+    cursor: pointer;
+}
+
+li {
+    text-decoration: none;
+    list-style-type: none;
+    width: 300px;
+}
+
+li:hover{
+    cursor: pointer;
+    color: #e16162;
+}
+
+.listSections{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem 2rem;
+}
+
 .secondaryText{
     color: #5f6c7b;
 }
@@ -15,6 +43,7 @@
 .flexRow{
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
 
 .UserLoggedIcon{
@@ -57,6 +86,7 @@
     margin: 0;
     background-color: #e8ecef;
     width: 300px;
+    position: relative;
 }
 
 
@@ -101,4 +131,36 @@ input:focus{
     text-decoration-line: underline;
     color: #5f6c7b;
 }
+
+.laminas-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.controller-increase-decrease {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.green-bg{
+    background-color: #00ebc7;
+}
+
+.red-bg{
+    background-color: #ff5470;
+}
+.drop-down-btn {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    font-weight: bolder;
+    font-size:20px;
+    text-align: left;
+}
+
 

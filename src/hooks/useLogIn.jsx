@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userContext } from "../components/context/UserContext";
+import useLocalStorage from "./useLocalStorage";
 
 
 const useLogIn = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const navigate = useNavigate()
-  const {setUser} = useContext(userContext)
+  const [user, setUser] = useLocalStorage('user', '')
 
   const fetchLogin = async (data) => {
     setError(null);
@@ -26,9 +26,7 @@ const useLogIn = () => {
               setError(response.error)
               return
           } 
-          const {user} = response
-          const {token} = response
-          setUser({user, token})
+          setUser(response)
 
           navigate('/home/album')
     } catch (e) {
