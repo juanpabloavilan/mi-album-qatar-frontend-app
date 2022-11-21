@@ -6,21 +6,27 @@ const useFetchLaminas = ({seccion}) => {
   const [error, setError] = useState()
   const [loading, setLoading] = useState()
   const [laminas, setLaminas] = useState()
-  const [diccionarioAlbum, setDiccionarioAlbum] = useLocalStorage('album')
+  const [getUsuario] = useLocalStorage('user')
+  const [getDiccionarioAlbum, setDiccionarioAlbum] = useLocalStorage('album')
+  const diccionarioAlbum = getDiccionarioAlbum()
+  const userId = getUsuario()?.user._id
   
   const fetchLaminas = async(seccion)=>{
     console.log('fetching laminas desde hook ', seccion);
-    const res = await fetch(`http://localhost:9090/album/equipo/${seccion}`)
+    const res = await fetch(`http://localhost:9090/album/equipo/${seccion}/${userId}`)
     const data = await res.json()
-    const diccionarioLaminas = {}
+    const diccionarioLaminasSeccion = {}
+
     const laminas = data?.map(lamina => {
-      const numero = lamina.refLamina.numero
-      const mappedLamina = { cantidad: lamina.quantity, ...lamina.refLamina  }
-      diccionarioLaminas[numero] = mappedLamina 
+      const numero = lamina.laminaRef.numero
+      const mappedLamina = { ...lamina.laminaRef, cantidad: lamina.cantidad }
+      diccionarioLaminasSeccion[numero] = mappedLamina
+
       return mappedLamina
     });
-    console.log(diccionarioLaminas);
-    setDiccionarioAlbum({...diccionarioAlbum, ...diccionarioLaminas})
+
+    console.log(diccionarioLaminasSeccion);
+    setDiccionarioAlbum({...diccionarioAlbum, ...diccionarioLaminasSeccion})
     return laminas
   }
 

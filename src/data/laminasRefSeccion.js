@@ -117,8 +117,11 @@ db.laminarefs.insertMany([
     { equipo: 'Alemania', nombre: 'Jonas Hofmann', imgUrl: 'link', numero: 25, tipo: 'jugador'},
 ])
 
-
+db.users.find({_id:ObjectId("6374c78f8ae980334a7c3197")}) Anuel 
 db.laminas.insertMany([
-    {ownerId:"6374c78f8ae980334a7c3197" ,idRef: "6379a7679488c1d5bb75d75f" , cantidad:2}
+    {ownerId:"6374c78f8ae980334a7c3197" ,numero: 10 , cantidad:2},
+    {ownerId:"6374c78f8ae980334a7c3197" ,numero: 11 , cantidad:1},
+    {ownerId:"6374c78f8ae980334a7c3197" ,numero: 13 , cantidad:6},
+    {ownerId:"6374c78f8ae980334a7c3197" ,numero: 15 , cantidad:6},
 ])
 */

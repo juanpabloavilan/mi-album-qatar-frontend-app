@@ -1,8 +1,8 @@
 import useLocalStorage from "../hooks/useLocalStorage"
 import {CgProfile} from 'react-icons/cg'
 const UserLoggedIcon = () =>{
-    const [user] = useLocalStorage('user')
-    const username = user?.user?.username
+    const [getValue] = useLocalStorage('user')
+    const username = getValue().user?.username
     return(
         <div className='UserLoggedIcon'>
             <CgProfile style={{fontSize: "2.5rem", color: "#abd1c6"}}/>

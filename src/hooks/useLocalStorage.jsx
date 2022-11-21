@@ -6,13 +6,20 @@ const useLocalStorage = (key, initialValue) => {
   useEffect(() => {
     try {
       const item = window.localStorage.getItem(key);
-      if (item) setValue(JSON.parse(item));
-      else setValue(initialValue);
+      if (item) {
+        setStoredValue(JSON.parse(item))
+      } else{
+        setValue(initialValue);
+      }
     } catch (e) {
       setValue(initialValue);
-      console.log(e);
+      //console.log(e);
     }
   }, []);
+
+  const getValue= ()=>{
+    return JSON.parse(window.localStorage.getItem(key))
+  }
 
   const setValue = (value) => {
     try {
@@ -32,7 +39,7 @@ const useLocalStorage = (key, initialValue) => {
     }
   };
 
-  return [storedValue, setValue, removeValue];
+  return [getValue, setValue, removeValue];
 };
 
 export default useLocalStorage;

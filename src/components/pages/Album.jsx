@@ -21,7 +21,7 @@ const Album = () => {
   const [fetchLaminasRef, loading, error] = useFetchLaminas(seccion)
   const [laminas, setLaminas] = useState()
 
-  const [diccionarioLaminas] = useLocalStorage('album')
+  const [getDiccionarioLaminas] = useLocalStorage('album')
 
   useEffect(()=>{
     //console.log("Buscando laminas de referencia", seccion)
@@ -46,7 +46,7 @@ const Album = () => {
         <div className="laminas-grid">
           {laminas?.map((lamina)=>{
             const numero = lamina.numero
-            return (<Lamina key={numero} {...diccionarioLaminas[numero]}/>)
+            return (<Lamina key={numero} {...getDiccionarioLaminas()[numero]}/>)
           })}
         </div>
       </StyledContainer>
@@ -55,8 +55,8 @@ const Album = () => {
 };
 
 
-const Lamina = ({numero, equipo, nombre, tipo, imgUrl, cantidad=0})=>{
-  const [isBeingSelected, setBeingSelected] = useState(false)
+const Lamina = ({numero, equipo, nombre, tipo, imgUrl, cantidad: cantidadInicial=0})=>{
+  const [cantidad, setCantidad] = useState(cantidadInicial)
   const {
     getLaminaQuantity,
     decreaseLaminaQuantity,
@@ -67,17 +67,23 @@ const Lamina = ({numero, equipo, nombre, tipo, imgUrl, cantidad=0})=>{
   } = useLaminaService()
 
   const reducer = (state, action) =>{
+    let nuevaCuenta
     switch (action.type){
       case 'increment':
         increaseLaminaQuantity(numero) //llamada api
-        return {count: state.count +1}
+        nuevaCuenta = state.count +1
+        setCantidad(nuevaCuenta)
+        return {count: nuevaCuenta}
       case 'decrement':
-        if(action.cantidad <= 0) return
+        if(action.cantidad <= 1) return {count: state.count}
         decreaseLaminaQuantity(numero) //llamada api
-        return {count: state.count -1}
+        nuevaCuenta = state.count -1
+        setCantidad(nuevaCuenta)
+        return {count: nuevaCuenta}
       case 'create':
-        if(action.cantidad!== 0) return
+        if(action.cantidad !== 0) return
         postLamina(numero) 
+        setCantidad(1)
         return {count: 1}
       case 'consult':
         const cantidad = getLaminaQuantity(numero) //llamada api
@@ -88,32 +94,28 @@ const Lamina = ({numero, equipo, nombre, tipo, imgUrl, cantidad=0})=>{
   }
   
   return (
-    <StyledLamina tipo={tipo} cantidad={cantidad} onMouseEnter={()=>setBeingSelected(true)} onMouseLeave={()=>setBeingSelected(false)}>
+    <StyledLamina tipo={tipo} cantidad={cantidad}>
       <p>{numero}</p>
-      {cantidad > 0 && 
-        <>
-        <p>{nombre}</p>
-        <p>{tipo}</p>
-        </>
-      }
-      {
-        true && <IncreaseDecreaseInput numero={numero} initialValue={{count: cantidad}} reducer={reducer}/>
-      }
-        
+      <p>{nombre}</p>
+      <p>{tipo}</p>
+      {error && <p>{error}</p>}
+      {loading && <p>{loading}</p>}
+      <IncreaseDecreaseInput numero={numero} initialValue={{count: cantidad}} reducer={reducer}/> 
     </StyledLamina>
   )
 }
 
-const IncreaseDecreaseInput = ({ numero, initialValue, reducer})=>{
+const IncreaseDecreaseInput = ({initialValue, reducer})=>{
   const [state, dispatch] = useReducer(reducer, initialValue)
-  console.log(numero, state.count); 
+  
 
   useEffect(()=>{
     dispatch({type: 'consult'})
   }, [])
+
   if(state.count === 0){
     return (
-      <button className="" onClick={()=> reducer('create')}>
+      <button className="" onClick={()=> dispatch({type: 'create', cantidad: state.count})}>
         Añadir lamina
       </button>
     )
