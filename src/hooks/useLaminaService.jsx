@@ -14,7 +14,7 @@ const useLaminaService = () => {
     setLoading(true)
     try{
         console.log('posting new lamina')
-        const res = await fetch('http://localhost:9090/lamina/', {
+        const res = await fetch(`${process.env.API_URL}/lamina/`, {
             method: 'POST',
             cache: 'no-cache',
             headers:{
@@ -41,7 +41,7 @@ const useLaminaService = () => {
     setLoading(true)
     try{
         console.log('patch increasing lamina quantity')
-        const res = await fetch(`http://localhost:9090/lamina/increase/${numero}/${userId}`,{
+        const res = await fetch(`${process.env.API_URL}/lamina/increase/${numero}/${userId}`,{
             method: 'PATCH',
             cache: 'no-cache',
             headers: {
@@ -64,7 +64,7 @@ const useLaminaService = () => {
     setLoading(true)
     try{
         console.log('patch decreasing lamina quantity')
-        const res = await fetch(`http://localhost:9090/lamina/decrease/${numero}/${userId}`,{
+        const res = await fetch(`${process.env.API_URL}/lamina/decrease/${numero}/${userId}`,{
             method: 'PATCH',
             cache: 'no-cache',
             headers: {

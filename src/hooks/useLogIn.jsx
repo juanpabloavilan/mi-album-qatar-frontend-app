@@ -13,7 +13,7 @@ const useLogIn = () => {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:9090/usuario/signin", {
+      const res = await fetch(`${process.env.API_URL}/usuario/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

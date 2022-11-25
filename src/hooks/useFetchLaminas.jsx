@@ -13,7 +13,7 @@ const useFetchLaminas = ({seccion}) => {
   
   const fetchLaminas = async(seccion)=>{
     console.log('fetching laminas desde hook ', seccion);
-    const res = await fetch(`http://localhost:9090/album/equipo/${seccion}/${userId}`)
+    const res = await fetch(`${process.env.API_URL}/album/equipo/${seccion}/${userId}`)
     const data = await res.json()
     const diccionarioLaminasSeccion = {}
 

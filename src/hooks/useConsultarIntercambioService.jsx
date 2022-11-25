@@ -5,7 +5,7 @@ const useIntercambioService = () => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({})
   const [error, setError] = useState()
-  const URL = 'http://localhost:9090/mesaDeIntercambio'
+  const URL = `${process.env.API_URL}/mesaDeIntercambio`
   const [getUser] = useLocalStorage('user')
   const currentUserId = getUser().user?._id
 
