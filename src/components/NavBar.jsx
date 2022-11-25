@@ -2,6 +2,7 @@ import { Link,  useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import {BsFillStickiesFill} from 'react-icons/bs'
 import {CgArrowsExchange, CgProfile} from 'react-icons/cg'
+import {VscSignOut} from 'react-icons/vsc'
 const NavBar = ()=>{
     return(
         <div className="navbar">
@@ -13,7 +14,7 @@ const NavBar = ()=>{
                 <p className='secondaryText'>Menú</p>
                 <NavBarTab icon={<BsFillStickiesFill/>} text="Album" to='album'/>
                 <NavBarTab icon={<CgArrowsExchange/>} text="Intercambiar" to='intercambio'/>
-                <NavBarTab icon={<CgProfile/>} text="Perfil" to='perfil'/>
+                <NavBarTab icon={<VscSignOut/>} text="Cerrar sesión" to='/'/>
             </div>
         </div>
     )
@@ -35,7 +36,7 @@ const StyledNavBarTab = styled.div`
 
 const NavBarTab = ({icon, text, to}) => {
     const location = useLocation();
-    const isSelected = location.pathname.includes(to)
+    const isSelected = location.pathname.endsWith(to)
     
     return(
         <StyledNavBarTab selected={isSelected}>

@@ -13,3 +13,7 @@ export const signUpFormValidationSchema = yup.object({
     password: yup.string().min(4).max(31).required(),
     confirmPassword: yup.string().oneOf([yup.ref('password'), null])
 })
+
+export const  exchangeLaminaFormValidationSchema = yup.object({
+    email: yup.string().email().required()
+})

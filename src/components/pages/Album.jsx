@@ -40,9 +40,8 @@ const Album = () => {
     <StyledContainer>
       <h1>Album</h1>
       <Dropdown list={secciones} cambiarSeccion={cambiarSeccion}/>
-
       <StyledContainer>
-        <h2>{seccion}</h2>
+        <h1>{seccion}</h1>
         <div className="laminas-grid">
           {laminas?.map((lamina)=>{
             const numero = lamina.numero
@@ -96,7 +95,7 @@ const Lamina = ({numero, equipo, nombre, tipo, imgUrl, cantidad: cantidadInicial
   return (
     <StyledLamina tipo={tipo} cantidad={cantidad}>
       <p>{numero}</p>
-      <p>{nombre}</p>
+      <p className="bold">{nombre}</p>
       <p>{tipo}</p>
       {error && <p>{error}</p>}
       {loading && <p>{loading}</p>}
@@ -133,10 +132,9 @@ export default Album;
 
 const StyledLamina = styled.div`
   border: ${props => {
-   return props.tipo === 'especial' ?  '' :
+   return props.tipo === 'especial' ?  '2px solid #3da9fc' :
    props.tipo ==='escudo' ? '2px solid #f9bc60' : 
    props.tipo === 'jugador' ? '2px solid #e8ecef' :
-   props.tipo === 'estadio' ? '2px solid #004643' : 
    props.tipo === 'museo' ? '2px solid #e16162' :
    ''
   }};
@@ -144,7 +142,7 @@ const StyledLamina = styled.div`
    return props.cantidad > 0 ?  
    props.tipo ==='escudo' ? '#f9bc60' : 
    props.tipo === 'jugador' ? '#e8ecef' :
-   props.tipo === 'estadio' ? '#004643' : 
+   props.tipo === 'especial' ? '#3da9fc' : 
    props.tipo === 'museo' ? '#e16162' :''
    : 'none'
   }} ;
@@ -153,7 +151,9 @@ const StyledLamina = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items:center;
-  height: 300px;
+  height: 350px;
+  padding: 1rem;
+  text-align: center;
   
 `
 

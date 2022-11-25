@@ -8,7 +8,6 @@ export const tiposDeLaminas = [
 
 export const secciones = [
     "Especiales",
-    "Estadios",
     "Qatar",
     "Ecuador",
     "Senegal",
@@ -33,7 +32,7 @@ export const secciones = [
     "Canada",
     "Marruecos",
     "Croacia",
-    "Brazil",
+    "Brasil",
     "Serbia",
     "Suiza",
     "Camerún",
@@ -41,5 +40,4 @@ export const secciones = [
     "Ghana",
     "Uruguay",
     "Republica de Korea",
-    "Museo"
   ]

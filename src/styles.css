@@ -8,6 +8,11 @@
     font-weight:500;
 }
 
+.bold {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
 button{
     padding: 0.25rem 1rem;
     border-radius: 0.25rem;
@@ -44,6 +49,25 @@ li:hover{
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.lamina-container{
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height: 400px;
+    gap: 0.5rem;
+    padding: 2rem;
+    background-color: #3da9fc;
+    text-align: center;
 }
 
 .UserLoggedIcon{
@@ -133,9 +157,10 @@ input:focus{
 }
 
 .laminas-grid {
+    margin-top: 2rem;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .controller-increase-decrease {
