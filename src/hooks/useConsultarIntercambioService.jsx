@@ -5,7 +5,7 @@ const useIntercambioService = () => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState({})
   const [error, setError] = useState()
-  const URL = `${process.env.API_URL}/mesaDeIntercambio`
+  const URL = `${process.env.REACT_APP_API_URL}/mesaDeIntercambio`
   const [getUser] = useLocalStorage('user')
   const currentUserId = getUser().user?._id
 

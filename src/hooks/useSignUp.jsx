@@ -13,7 +13,7 @@ const useSignUp = () => {
       setLoading(true)
       //Enviar request de registrar
       try{
-          const res = await fetch(`${process.env.API_URL}/usuario/signup`,{
+          const res = await fetch(`${process.env.REACT_APP_API_URL}/usuario/signup`,{
             method: 'POST',
             headers:{
               'Content-Type': 'application/json'

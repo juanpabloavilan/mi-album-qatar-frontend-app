@@ -13,7 +13,7 @@ const useLogIn = () => {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.API_URL}/usuario/signin`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/usuario/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
